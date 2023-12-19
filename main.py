@@ -43,9 +43,12 @@ def create():
     temp = {key: dict()}
     for field in fields:
         res = input(f'{field}:')
-        temp[key][field] = int(res) if res.isnumeric() else res
-        last = collections.deque(pets, maxlen = 1)[0]
-        pets[last + 1] = temp
+        if type(res) == int:
+            temp[key][field] = int(res)
+        else:
+            print('Введите возраст числом.')
+    last = max(pets.keys())
+    pets[last + 1] = temp
 
 def read():
     print('Комманда "Информация"')
@@ -60,7 +63,7 @@ def read():
              f'Имя владельца: {pet[key]['Имя владельца']}'
     print(result)
 
-def updete():
+def update():
     print('Комманда "Обновить данные"')
     ID = int(input('Введите ID:'))
     pet = get_pet(ID)
@@ -82,7 +85,7 @@ def delete():
     pets.pop(ID, None)
 
 def get_pet(ID):
-    return pets.get(ID, False)
+    return pets.get(ID, None)
 
 def pets_list():
     for key, val in pets.items():
@@ -90,7 +93,7 @@ def pets_list():
         commands = {
             'create': create,
             'read': read,
-            'update': updete,
+            'update': update,
             'delete': delete,
             'list': pets_list,
             'stop': 0
@@ -103,8 +106,7 @@ def pets_list():
 
         while True:
             print_commands()
-            commands = input('Введите команду:')
-            command = commands()
+            command = input('Введите команду:')
             if command not in commands.key():
                 continue
             if command == 'stop':
