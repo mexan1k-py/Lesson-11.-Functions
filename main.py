@@ -8,9 +8,6 @@ for i in range(b, 0, -1):
     print(chisl(i))
 
 #Homework 2
-import collections
-
-
 pets = {
     1: {
         'Мухтар': {
@@ -37,7 +34,7 @@ def get_suffix(age):
         return 'лет'
 
 def create():
-    print('Комманда "Добавить"')
+    print('Команда "Добавить"')
     key = input('Кличка питомца:')
     fields = ['Вид питомца', 'Возраст питомца', 'Имя владельца']
     temp = {key: dict()}
@@ -51,7 +48,7 @@ def create():
     pets[last + 1] = temp
 
 def read():
-    print('Комманда "Информация"')
+    print('Команда "Информация"')
     ID = int(input('Введите ID: '))
     pet = get_pet(ID)
     if not pet:
@@ -64,7 +61,7 @@ def read():
     print(result)
 
 def update():
-    print('Комманда "Обновить данные"')
+    print('Команда "Обновить данные"')
     ID = int(input('Введите ID:'))
     pet = get_pet(ID)
     if not pet:
@@ -80,7 +77,7 @@ def update():
             pet[key1].update(temp)
 
 def delete():
-    print('Комманда "Удалить"')
+    print('Команда "Удалить"')
     ID = int(input('Введите ID:'))
     pets.pop(ID, None)
 
@@ -100,7 +97,7 @@ def pets_list():
         }
 
         def print_commands():
-            print('Доступные комманды:')
+            print('Доступные команды:')
             for key in commands:
                 print('->', key)
 
